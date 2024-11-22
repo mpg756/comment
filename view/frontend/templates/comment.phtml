@@ -1,0 +1,23 @@
+<?php
+declare(strict_types=1);
+
+use Magento\Framework\Escaper;
+
+/** @var $this Valerii\Comment\Block\Comment */
+/** @var $escaper Escaper */
+$comments = $this->getComments();
+?>
+<div id="comments-container" data-role="product-comment"></div>
+<?= $this->getChildHtml() ?>
+
+
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Valerii_Comment/js/comments": {
+                "getCommentsUrl": "<?= $escaper->escapeJs($this->getCommentsUrl()) ?>",
+                "commentsTabSelector": "#tab-label-comments"
+            }
+        }
+    }
+</script>

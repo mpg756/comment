@@ -1,0 +1,122 @@
+<?xml version="1.0"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">comment_listing.comment_listing_data_source</item>
+            <item name="deps" xsi:type="string">comment_listing.comment_listing_data_source</item>
+        </item>
+    </argument>
+    <settings>
+        <spinner>comment_listing_columns</spinner>
+        <deps>
+            <dep>comment_listing.comment_listing_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="comment_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">comment_id</param>
+            </storageConfig>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+        <aclResource>Valerii_Comment::management_view</aclResource>
+        <dataProvider class="Valerii\Comment\Ui\DataProvider\CommentDataProvider" name="comment_listing_data_source">
+            <settings>
+                <requestFieldName>comment_id</requestFieldName>
+                <primaryFieldName>main_table.comment_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <settings>
+            <sticky>true</sticky>
+        </settings>
+        <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+        <filterSearch name="fulltext"/>
+        <filters name="listing_filters"/>
+        <paging name="listing_paging"/>
+        <massaction name="listing_massaction" component="Magento_Ui/js/grid/tree-massactions">
+            <action name="delete">
+                <settings>
+                    <url path="comment/comment/massDelete"/>
+                    <type>delete</type>
+                    <label translate="true">Delete</label>
+                </settings>
+            </action>
+        </massaction>
+    </listingToolbar>
+    <columns name="comment_listing_columns">
+        <settings>
+            <childDefaults>
+                <param name="fieldAction" xsi:type="array">
+                    <item name="provider" xsi:type="string">comment_listing.comment_listing.comment_listing_columns.actions</item>
+                    <item name="target" xsi:type="string">applyAction</item>
+                    <item name="params" xsi:type="array">
+                        <item name="0" xsi:type="string">view</item>
+                        <item name="1" xsi:type="string">${ $.$data.rowIndex }</item>
+                    </item>
+                </param>
+            </childDefaults>
+        </settings>
+        <selectionsColumn name="ids">
+            <settings>
+                <indexField>comment_id</indexField>
+            </settings>
+        </selectionsColumn>
+        <column name="comment_id">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">ID</label>
+            </settings>
+        </column>
+        <column name="product_id">
+            <settings>
+                <filter>textRange</filter>
+                <label translate="true">Product Id</label>
+            </settings>
+        </column>
+        <column name="customer_id">
+            <settings>
+                <filter>textRange</filter>
+                <label translate="true">Customer Id</label>
+            </settings>
+        </column>
+        <column name="email">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Email</label>
+            </settings>
+        </column>
+        <column name="name">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Name</label>
+            </settings>
+        </column>
+        <column name="message">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Message</label>
+            </settings>
+        </column>
+        <column name="created_at">
+            <settings>
+                <filter>textRange</filter>
+                <label translate="true">Created At</label>
+            </settings>
+        </column>
+        <actionsColumn name="actions" class="Valerii\Comment\Ui\Component\Listing\Column\ViewAction">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="viewUrlPath" xsi:type="string">comment/comment/view</item>
+                    <item name="urlEntityParamName" xsi:type="string">comment_id</item>
+                </item>
+            </argument>
+            <settings>
+                <indexField>comment_id</indexField>
+            </settings>
+        </actionsColumn>
+    </columns>
+</listing>

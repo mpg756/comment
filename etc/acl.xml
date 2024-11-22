@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Valerii_Comment::management" title="Comment Management">
+                    <resource id="Valerii_Comment::management_add" title="Comment Add (API)"/>
+                    <resource id="Valerii_Comment::management_view" title="Comment View"/>
+                    <resource id="Valerii_Comment::management_delete" title="Comment Deleting"/>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

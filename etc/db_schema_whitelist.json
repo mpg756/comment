@@ -1,0 +1,23 @@
+{
+    "comment": {
+        "column": {
+            "comment_id": true,
+            "product_id": true,
+            "customer_id": true,
+            "store_id": true,
+            "email": true,
+            "name": true,
+            "message": true,
+            "created_at": true
+        },
+        "index": {
+            "COMMENT_PRODUCT_ID": true,
+            "COMMENT_CUSTOMER_ID": true
+        },
+        "constraint": {
+            "COMMENT_PRODUCT_ID_CATALOG_PRODUCT_ENTITY_ENTITY_ID": true,
+            "COMMENT_STORE_ID_STORE_STORE_ID": true,
+            "PRIMARY": true
+        }
+    }
+}

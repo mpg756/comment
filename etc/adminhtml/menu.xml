@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Valerii_Comment::comment_management" title="Comment Management" translate="title" module="Magento_Backend" sortOrder="100" parent="Magento_Backend::marketing" resource="Valerii_Comment::management_view"/>
+        <add id="Valerii_Comment::management" sortOrder="10" title="All Comments" module="Valerii_Comment" parent="Valerii_Comment::comment_management" resource="Valerii_Comment::management_view" translate="title" action="comment/comment/index"/>
+    </menu>
+</config>

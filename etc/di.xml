@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Valerii\Comment\Api\Data\CommentInterface" type="Valerii\Comment\Model\Comment"/>
+    <preference for="Valerii\Comment\Api\GetCommentListInterface" type="Valerii\Comment\Query\Comment\GetListQuery"/>
+    <preference for="Valerii\Comment\Api\SaveCommentInterface" type="Valerii\Comment\Command\Comment\SaveCommand"/>
+    <preference for="Valerii\Comment\Api\DeleteCommentByIdInterface" type="Valerii\Comment\Command\Comment\DeleteByIdCommand"/>
+    <preference for="Valerii\Comment\Api\GetCommentsByProductIdInterface" type="Valerii\Comment\Command\Comment\GetCommentsByProductId"/>
+    <preference for="Valerii\Comment\Api\Data\CommentSearchResultsInterface" type="Valerii\Comment\Model\CommentSearchResults"/>
+</config>

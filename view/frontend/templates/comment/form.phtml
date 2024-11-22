@@ -1,0 +1,63 @@
+<?php
+declare(strict_types=1);
+
+use Magento\Framework\Escaper;
+use Valerii\Comment\Block\CommentForm;
+
+/** @var $this CommentForm */
+/** @var $escaper Escaper */
+?>
+<div class="row">
+    <div class="col-md-8">
+        <form name="addData" method="post" id="sendComment" class="form"
+              action="#"
+              data-hasrequired="<?= $escaper->escapeHtmlAttr(__('* Required Fields')) ?>"
+              data-mage-init='{"validation":{}}'>
+            <fieldset class="fieldset">
+                <legend class="legend"><span><?= $escaper->escapeHtmlAttr(__('Comment Form')) ?></span></legend>
+                <fieldset class="fieldset row">
+                    <div class="fields col-md-6">
+                        <div class="field name required">
+                            <label class="label" for="name"><span><?= $escaper->escapeHtmlAttr(__('Name')) ?></span></label>
+                            <div class="control">
+                                <input name="name" id="name" title="<?= $escaper->escapeHtmlAttr(__('Name')) ?>" value="<?= $escaper->escapeHtmlAttr($this->getCustomerName()) ?>" class="input-text" type="text"
+                                       data-validate="{required:true, 'validate-alphanum-with-spaces':true}">
+                            </div>
+                        </div>
+                        <div class="field name required">
+                            <label class="label" for="email"><span><?= $escaper->escapeHtmlAttr(__('Email')) ?></span></label>
+                            <div class="control">
+                                <input name="email" id="email" title="<?= $escaper->escapeHtmlAttr(__('Email')) ?>" value="<?= $escaper->escapeHtmlAttr($this->getEmail()) ?>" class="input-text" type="text"
+                                       data-validate="{required:true, 'validate-email':true}">
+                            </div>
+                        </div>
+                        <div class="field name required">
+                            <label class="label" for="message"><span><?= $escaper->escapeHtmlAttr(__('Message')) ?></span></label>
+                            <div class="control">
+                                <textarea name="message" id="message" title="<?= $escaper->escapeHtmlAttr(__('Message')) ?>" class="input-text" cols="5" rows="3" data-validate="{required:true}" aria-required="true"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </fieldset>
+            <div class="actions-toolbar">
+                <div class="primary">
+                    <button type="submit" class="action submit primary" title="<?= $escaper->escapeHtmlAttr(__('Save')) ?>"><span><?= $escaper->escapeHtmlAttr(__('Save')) ?></span></button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Valerii_Comment/js/submitForm": {
+                "postUrl": "<?= $escaper->escapeJs($this->getFormAction()) ?>",
+                "formId": "sendComment",
+                "productId": "<?= $escaper->escapeJs($this->getProductId()) ?>",
+                "storeId": "<?= $escaper->escapeJs($this->getStoreId()) ?>"
+            }
+        }
+    }
+</script>

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <route url="/V1/comment/getlist" method="GET">
+        <service class="Valerii\Comment\Api\GetCommentListInterface" method="execute"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/comment/save" method="POST">
+        <service class="Valerii\Comment\Api\SaveCommentInterface" method="execute"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/comment/product_id/:productId/" method="GET">
+        <service class="Valerii\Comment\Api\GetCommentsByProductIdInterface" method="execute"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/comment/product_id/:productId" method="DELETE">
+        <service class="Valerii\Comment\Api\DeleteCommentByIdInterface" method="execute"/>
+        <resources>
+            <resource ref="Valerii_Comment::management_delete"/>
+        </resources>
+    </route>
+</routes>
